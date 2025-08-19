@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Borang Permohonan Kursus Praperkahwinan</title>
+    <!-- Memuatkan Tailwind CSS untuk penggayaan -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Memuatkan fon Inter dari Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Menggunakan fon Inter sebagai fon utama */
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        /* Menambah sedikit gaya tambahan untuk fokus input */
+        .form-input:focus, .form-select:focus {
+            outline: none;
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.5);
+        }
+        /* Gaya untuk modal mesej */
+        #messageModal.hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 p-4 sm:p-6 md:p-8">
+    <div class="max-w-4xl mx-auto bg-white p-6 sm:p-8 rounded-xl shadow-lg">
+
+        <!-- Tajuk Utama Borang -->
+        <div class="text-center mb-8">
+            <h1 class="text-2xl sm:text-3xl font-bold text-gray-800">Borang Permohonan Kursus Praperkahwinan Negeri Pulau Pinang Kebenaran Khas</h1>
+            <p class="text-gray-500 mt-2">Sila lengkapkan semua maklumat di bawah dengan teliti.</p>
+        </div>
+
+        <form action="#" method="POST" id="courseApplicationForm">
+            <div class="space-y-8">
+
+                <!-- Bahagian 1: Butiran Kursus -->
+                <fieldset class="border border-gray-200 p-4 rounded-lg">
+                    <legend class="text-lg font-semibold text-gray-700 px-2">Butiran Kursus</legend>
+                    <div class="bg-blue-50 border-l-4 border-blue-500 text-blue-800 p-4 rounded-md mb-4" role="alert">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div><p class="font-medium">Tahun Kursus:</p> <p>2025</p></div>
+                            <div><p class="font-medium">Lokasi:</p> <p>Lokasi Terpilih Institusi</p></div>
+                            <div><p class="font-medium">Tarikh Kursus:</p> <p>27/12/2025 & 28/12/2025</p></div>
+                            <div><p class="font-medium">Tarikh Permohonan:</p> <p>19/08/2025</p></div>
+                        </div>
+                    </div>
+                    <a href="#" class="text-sm text-blue-600 hover:underline">Klik untuk tukar kursus lain</a>
+                </fieldset>
+
+                <!-- Bahagian 2: Maklumat Pemohon -->
+                <fieldset class="border border-gray-200 p-4 rounded-lg">
+                    <legend class="text-lg font-semibold text-gray-700 px-2">Maklumat Pemohon (Seperti Dalam Kad Pengenalan)</legend>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-4">
+                        <!-- Nama Pemohon -->
+                        <div class="md:col-span-2">
+                            <label for="nama_pemohon" class="block text-sm font-medium text-gray-700 mb-1">Nama Penuh Pemohon</label>
+                            <input type="text" id="nama_pemohon" name="nama_pemohon" class="form-input w-full border-gray-300 rounded-md shadow-sm transition" placeholder="Masukkan nama penuh anda">
+                        </div>
+                        <!-- Jantina -->
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Jantina</label>
+                            <div class="flex items-center space-x-4">
+                                <label class="flex items-center">
+                                    <input type="radio" name="jantina" value="lelaki" class="form-radio h-4 w-4 text-blue-600">
+                                    <span class="ml-2 text-gray-700">Lelaki</span>
+                                </label>
+                                <label class="flex items-center">
+                                    <input type="radio" name="jantina" value="perempuan" class="form-radio h-4 w-4 text-blue-600">
+                                    <span class="ml-2 text-gray-700">Perempuan</span>
+                                </label>
+                            </div>
+                        </div>
+                        <!-- Tarikh Lahir -->
+                        <div>
+                            <label for="tarikh_lahir" class="block text-sm font-medium text-gray-700 mb-1">Tarikh Lahir</p>
+                            <input type="date" id="tarikh_lahir" name="tarikh_lahir" class="form-input w-full border-gray-300 rounded-md shadow-sm transition">
+                        </div>
+                        <!-- Tempat Lahir -->
+                        <div>
+                            <label for="tempat_lahir" class="block text-sm font-medium text-gray-700 mb-1">Tempat Lahir (Negeri)</label>
+                            <select id="tempat_lahir" name="tempat_lahir" class="form-select w-full border-gray-300 rounded-md shadow-sm transition">
+                                <option value="">-- Pilih Negeri --</option>
+                                <option value="01">Johor</option>
+                                <option value="02">Kedah</option>
+                                <option value="03">Kelantan</option>
+                                <option value="04">Melaka</option>
+                                <option value="05">Negeri Sembilan</option>
+                                <option value="06">Pahang</option>
+                                <option value="07">Pulau Pinang</option>
+                                <option value="08">Perak</option>
+                                <option value="09">Perlis</option>
+                                <option value="10">Selangor</option>
+                                <option value="11">Terengganu</option>
+                                <option value="12">Sabah</option>
+                                <option value="13">Sarawak</option>
+                                <option value="14">Wilayah Persekutuan Kuala Lumpur</option>
+                                <option value="15">Wilayah Persekutuan Labuan</option>
+                                <option value="16">Wilayah Persekutuan Putrajaya</option>
+                                <option value="98">Luar Negeri</option>
+                                <option value="99">Lain-lain</option>
+                            </select>
+                        </div>
+                        <!-- Bangsa -->
+                        <div>
+                            <label for="bangsa" class="block text-sm font-medium text-gray-700 mb-1">Bangsa</label>
+                            <select id="bangsa" name="bangsa" class="form-select w-full border-gray-300 rounded-md shadow-sm transition">
+                                <option value="">-- Pilih Bangsa --</option>
+                                <option value="0100">Melayu</option>
+                                <option value="0200">Cina</option>
+                                <option value="0300">India</option>
+                                <option value="0800">Bumiputera Sabah</option>
+                                <option value="1000">Bumiputera Sarawak</option>
+                                <option value="1200">Orang Asli (Semenanjung)</option>
+                                <option value="9999">Lain-Lain</option>
+                            </select>
+                        </div>
+                         <!-- Umur -->
+                        <div>
+                            <label for="umur" class="block text-sm font-medium text-gray-700 mb-1">Umur</label>
+                            <input type="number" id="umur" name="umur" class="form-input w-full border-gray-300 rounded-md shadow-sm transition" placeholder="Contoh: 25">
+                        </div>
+                        <!-- Nombor K/P -->
+                        <div>
+                            <label for="nokp" class="block text-sm font-medium text-gray-700 mb-1">Nombor K/P Baru</label>
+                            <input type="text" id="nokp" name="nokp" class="form-input w-full border-gray-300 rounded-md shadow-sm transition" placeholder="Contoh: 921211111166">
+                        </div>
+                    </div>
+                </fieldset>
+
+                <!-- Bahagian 3: Alamat -->
+                <fieldset class="border border-gray-200 p-4 rounded-lg">
+                    <legend class="text-lg font-semibold text-gray-700 px-2">Alamat</legend>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-4">
+                        <!-- Alamat Penuh -->
+                        <div class="md:col-span-2">
+                            <label for="alamat" class="block text-sm font-medium text-gray-700 mb-1">Alamat Penuh</label>
+                            <textarea id="alamat" name="alamat" rows="3" class="form-input w-full border-gray-300 rounded-md shadow-sm transition" placeholder="Masukkan alamat surat-menyurat"></textarea>
+                        </div>
+                        <!-- Negara -->
+                        <div>
+                            <label for="negara" class="block text-sm font-medium text-gray-700 mb-1">Negara</label>
+                            <input type="text" id="negara" name="negara" value="Malaysia" readonly class="form-input w-full border-gray-300 rounded-md shadow-sm transition bg-gray-100">
+                        </div>
+                        <!-- Negeri -->
+                        <div>
+                            <label for="negeri" class="block text-sm font-medium text-gray-700 mb-1">Negeri</label>
+                            <select id="negeri" name="negeri" class="form-select w-full border-gray-300 rounded-md shadow-sm transition">
+                                <option value="">-- Pilih Negeri --</option>
+                                <option>Johor</option>
+                                <option>Kedah</option>
+                                <option>Kelantan</option>
+                                <option>Melaka</option>
+                                <option>Negeri Sembilan</option>
+                                <option>Pahang</option>
+                                <option>Pulau Pinang</option>
+                                <option>Perak</option>
+                                <option>Perlis</option>
+                                <option>Selangor</option>
+                                <option>Terengganu</option>
+                                <option>Sabah</option>
+                                <option>Sarawak</option>
+                                <option>Wilayah Persekutuan Kuala Lumpur</option>
+                                <option>Wilayah Persekutuan Labuan</option>
+                                <option>Wilayah Persekutuan Putrajaya</option>
+                            </select>
+                        </div>
+                        <!-- Daerah -->
+                        <div>
+                            <label for="daerah" class="block text-sm font-medium text-gray-700 mb-1">Daerah</label>
+                            <select id="daerah" name="daerah" class="form-select w-full border-gray-300 rounded-md shadow-sm transition">
+                                <option value="">-- Pilih Daerah --</option>
+                                <option>Barat Daya</option>
+                                <option>Seberang Perai Selatan</option>
+                                <option>Seberang Perai Tengah</option>
+                                <option>Seberang Perai Utara (Butterworth)</option>
+                                <option>Timur Laut</option>
+                            </select>
+                        </div>
+                        <!-- Poskod -->
+                        <div>
+                            <label for="poskod" class="block text-sm font-medium text-gray-700 mb-1">Poskod</label>
+                            <input type="text" id="poskod" name="poskod" class="form-input w-full border-gray-300 rounded-md shadow-sm transition" placeholder="Contoh: 14000">
+                        </div>
+                    </div>
+                </fieldset>
+
+                <!-- Bahagian 4: Kewarganegaraan & Institusi Pendidikan -->
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                    <fieldset class="border border-gray-200 p-4 rounded-lg">
+                        <legend class="text-lg font-semibold text-gray-700 px-2">Kewarganegaraan</legend>
+                        <div class="mt-4">
+                            <label for="taraf_warganegara" class="block text-sm font-medium text-gray-700 mb-1">Taraf Warganegara</label>
+                            <select id="taraf_warganegara" name="taraf_warganegara" class="form-select w-full border-gray-300 rounded-md shadow-sm transition">
+                                <option value="">-- Pilih Status --</option>
+                                <option value="1">Warganegara</option>
+                                <option value="2">Bukan Warganegara</option>
+                                <option value="3">Penduduk Tetap</option>
+                            </select>
+                        </div>
+                    </fieldset>
+
+                    <fieldset class="border border-gray-200 p-4 rounded-lg">
+                        <legend class="text-lg font-semibold text-gray-700 px-2">Maklumat Institusi Pendidikan</legend>
+                        <div class="space-y-4 mt-4">
+                             <div>
+                                <label for="kad_matrik" class="block text-sm font-medium text-gray-700 mb-1">Nombor Kad Matrik/ Kad Pelajar</label>
+                                <input type="text" id="kad_matrik" name="kad_matrik" class="form-input w-full border-gray-300 rounded-md shadow-sm transition" placeholder="Contoh: 12345678">
+                            </div>
+                            <div>
+                                <label for="pekerjaan" class="block text-sm font-medium text-gray-700 mb-1">Pekerjaan</label>
+                                <input type="text" id="pekerjaan" name="pekerjaan" class="form-input w-full border-gray-300 rounded-md shadow-sm transition" placeholder="Contoh: Pelajar">
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+
+                <!-- Bahagian 5: Akademik -->
+                <fieldset class="border border-gray-200 p-4 rounded-lg">
+                    <legend class="text-lg font-semibold text-gray-700 px-2">Maklumat Akademik</legend>
+                     <div class="mt-4">
+                        <label for="taraf_pendidikan" class="block text-sm font-medium text-gray-700 mb-1">Taraf Pendidikan Tertinggi</label>
+                        <select id="taraf_pendidikan" name="taraf_pendidikan" class="form-select w-full border-gray-300 rounded-md shadow-sm transition">
+                            <option value="">-- Pilih Taraf Akademik --</option>
+                            <option value="Doktor Falsafah (Ph.D)">Doktor Falsafah (Ph.D)</option>
+                            <option value="Lepasan Sarjana">Lepasan Sarjana</option>
+                            <option value="Sarjana Muda">Sarjana Muda</option>
+                            <option value="Diploma">Diploma</option>
+                            <option value="STPM dan setaraf">STPM dan setaraf</option>
+                            <option value="SPM/SPVM dan setaraf">SPM/SPVM dan setaraf</option>
+                            <option value="PMR/SRP dan setaraf">PMR/SRP dan setaraf</option>
+                            <option value="Sekolah Rendah">Sekolah Rendah</option>
+                            <option value="Tidak bersekolah">Tidak bersekolah</option>
+                            <option value="Lain-lain">Lain-lain</option>
+                        </select>
+                    </div>
+                </fieldset>
+                
+                <!-- Bahagian 6: Matlamat Kursus (Ciri Gemini) -->
+                <fieldset class="border border-gray-200 p-4 rounded-lg">
+                    <legend class="text-lg font-semibold text-gray-700 px-2">Matlamat & Harapan Kursus</legend>
+                    <div class="mt-4">
+                        <label for="matlamat_kursus" class="block text-sm font-medium text-gray-700 mb-1">
+                            Apakah yang anda harapkan daripada kursus ini?
+                        </label>
+                        <textarea id="matlamat_kursus" name="matlamat_kursus" rows="5" class="form-input w-full border-gray-300 rounded-md shadow-sm transition" placeholder="Contoh: Saya berharap dapat mendalami ilmu agama dan mengeratkan silaturahim..."></textarea>
+                        <div class="mt-3 text-right">
+                             <button type="button" id="generateGoalBtn" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition">
+                                ✨ Jana Idea Matlamat
+                                <svg id="loadingSpinner" class="animate-spin -mr-1 ml-3 h-5 w-5 text-white hidden" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                                    <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </fieldset>
+
+                <!-- Bahagian 7: Maklumat Telefon & E-mel -->
+                <fieldset class="border border-gray-200 p-4 rounded-lg">
+                    <legend class="text-lg font-semibold text-gray-700 px-2">Maklumat Telefon & E-mel</legend>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-4">
+                        <div>
+                            <label for="telefon_bimbit" class="block text-sm font-medium text-gray-700 mb-1">No. Telefon Bimbit</label>
+                            <input type="tel" id="telefon_bimbit" name="telefon_bimbit" class="form-input w-full border-gray-300 rounded-md shadow-sm transition" placeholder="Contoh: 012-3456789">
+                        </div>
+                        <div>
+                            <label for="email" class="block text-sm font-medium text-gray-700 mb-1">E-mel (Untuk Notifikasi)</label>
+                            <input type="email" id="email" name="email" class="form-input w-full border-gray-300 rounded-md shadow-sm transition" placeholder="anda@contoh.com">
+                        </div>
+                    </div>
+                </fieldset>
+
+                <!-- Bahagian 8: Kata Laluan -->
+                <fieldset class="border border-gray-200 p-4 rounded-lg">
+                    <legend class="text-lg font-semibold text-gray-700 px-2">Kata Laluan</legend>
+                     <p class="text-sm text-gray-600 mt-2 mb-4">Kata laluan perlu sekurang-kurangnya 8 aksara. Ia akan digunakan untuk menyemak status permohonan atau pembatalan.</p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label for="kata_laluan" class="block text-sm font-medium text-gray-700 mb-1">Kata Laluan</label>
+                            <input type="password" id="kata_laluan" name="kata_laluan" class="form-input w-full border-gray-300 rounded-md shadow-sm transition">
+                        </div>
+                        <div>
+                            <label for="ulang_kata_laluan" class="block text-sm font-medium text-gray-700 mb-1">Ulang Kata Laluan</label>
+                            <input type="password" id="ulang_kata_laluan" name="ulang_kata_laluan" class="form-input w-full border-gray-300 rounded-md shadow-sm transition">
+                        </div>
+                    </div>
+                </fieldset>
+
+                <!-- Butang Hantar -->
+                <div class="flex justify-end pt-4">
+                    <button type="submit" class="w-full sm:w-auto bg-blue-600 text-white font-semibold py-3 px-8 rounded-lg shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-transform transform hover:scale-105">
+                        Hantar Permohonan
+                    </button>
+                </div>
+
+            </div>
+        </form>
+    </div>
+
+    <!-- Modal untuk Mesej -->
+    <div id="messageModal" class="fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full hidden">
+      <div class="relative top-20 mx-auto p-5 border w-96 shadow-lg rounded-md bg-white">
+        <div class="mt-3 text-center">
+          <h3 class="text-lg leading-6 font-medium text-gray-900" id="modalTitle"></h3>
+          <div class="mt-2 px-7 py-3">
+            <p class="text-sm text-gray-500" id="modalMessage"></p>
+          </div>
+          <div class="items-center px-4 py-3">
+            <button id="closeModalBtn" class="px-4 py-2 bg-blue-500 text-white text-base font-medium rounded-md w-full shadow-sm hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-300">
+              Tutup
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <script>
+        // --- Skrip untuk Ciri Bantuan Matlamat Kursus (Gemini API) ---
+
+        const generateGoalBtn = document.getElementById('generateGoalBtn');
+        const loadingSpinner = document.getElementById('loadingSpinner');
+        const goalTextarea = document.getElementById('matlamat_kursus');
+        const occupationInput = document.getElementById('pekerjaan');
+        const educationSelect = document.getElementById('taraf_pendidikan');
+        
+        // Elemen Modal
+        const messageModal = document.getElementById('messageModal');
+        const modalTitle = document.getElementById('modalTitle');
+        const modalMessage = document.getElementById('modalMessage');
+        const closeModalBtn = document.getElementById('closeModalBtn');
+
+        // Fungsi untuk memaparkan modal
+        function showModal(title, message) {
+            modalTitle.textContent = title;
+            modalMessage.textContent = message;
+            messageModal.classList.remove('hidden');
+        }
+
+        // Fungsi untuk menutup modal
+        closeModalBtn.addEventListener('click', () => {
+            messageModal.classList.add('hidden');
+        });
+
+        // Fungsi untuk memanggil Gemini API dengan exponential backoff
+        async function callGeminiWithBackoff(prompt, maxRetries = 3) {
+            let chatHistory = [{ role: "user", parts: [{ text: prompt }] }];
+            const payload = { contents: chatHistory };
+            const apiKey = ""; // Dibiarkan kosong, akan diisi oleh persekitaran
+            const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${apiKey}`;
+            
+            let attempt = 0;
+            let delay = 1000; // Mula dengan 1 saat
+
+            while (attempt < maxRetries) {
+                try {
+                    const response = await fetch(apiUrl, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(payload)
+                    });
+
+                    if (!response.ok) {
+                        // Jika respons tidak OK, cuba lagi selepas delay
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+
+                    const result = await response.json();
+                    
+                    if (result.candidates && result.candidates.length > 0 &&
+                        result.candidates[0].content && result.candidates[0].content.parts &&
+                        result.candidates[0].content.parts.length > 0) {
+                        return result.candidates[0].content.parts[0].text;
+                    } else {
+                        // Jika struktur data tidak dijangka, buang ralat
+                        throw new Error("Struktur respons API tidak sah.");
+                    }
+                } catch (error) {
+                    console.error(`Percubaan ${attempt + 1} gagal:`, error);
+                    attempt++;
+                    if (attempt >= maxRetries) {
+                        throw error; // Buang ralat selepas percubaan terakhir gagal
+                    }
+                    await new Promise(resolve => setTimeout(resolve, delay));
+                    delay *= 2; // Gandakan delay untuk percubaan seterusnya
+                }
+            }
+        }
+
+
+        // Event listener untuk butang 'Jana Idea'
+        generateGoalBtn.addEventListener('click', async () => {
+            // Dapatkan nilai dari borang
+            const occupation = occupationInput.value.trim();
+            const educationLevel = educationSelect.options[educationSelect.selectedIndex].text;
+
+            // Semak jika input kosong
+            if (!occupation || !educationLevel || educationSelect.value === "") {
+                showModal('Maklumat Tidak Lengkap', 'Sila isi ruangan Pekerjaan dan Taraf Pendidikan terlebih dahulu untuk mendapatkan idea yang lebih relevan.');
+                return;
+            }
+
+            // Paparkan spinner dan lumpuhkan butang
+            loadingSpinner.classList.remove('hidden');
+            generateGoalBtn.disabled = true;
+            goalTextarea.value = "Menjana idea...";
+
+            // Bina prom untuk Gemini
+            const prompt = `Saya seorang ${occupation} dengan kelulusan ${educationLevel}. Saya akan menghadiri sebuah kursus pra-perkahwinan. Berikan saya 2 atau 3 contoh matlamat atau harapan yang ringkas dan profesional untuk saya tulis dalam borang permohonan kursus ini. Tulis dalam bentuk senarai bernombor.`;
+
+            try {
+                // Panggil Gemini API
+                const generatedText = await callGeminiWithBackoff(prompt);
+                
+                // Kemas kini textarea dengan hasil
+                goalTextarea.value = generatedText.trim();
+
+            } catch (error) {
+                console.error("Gagal mendapatkan data dari Gemini API:", error);
+                goalTextarea.value = "Maaf, terdapat ralat semasa menjana idea. Sila cuba lagi.";
+                showModal('Ralat', 'Tidak dapat menjana idea pada masa ini. Sila periksa sambungan internet anda dan cuba lagi.');
+            } finally {
+                // Sembunyikan spinner dan aktifkan semula butang
+                loadingSpinner.classList.add('hidden');
+                generateGoalBtn.disabled = false;
+            }
+        });
+
+        // Elakkan borang dihantar apabila butang 'Jana Idea' ditekan
+        document.getElementById('courseApplicationForm').addEventListener('submit', function(event) {
+            // Di sini anda boleh menambah logik pengesahan borang sebelum menghantar
+            console.log('Borang sedang dihantar...');
+            event.preventDefault(); // Hentikan penghantaran sebenar untuk tujuan demo
+            showModal('Berjaya!', 'Permohonan anda telah berjaya dihantar (simulasi).');
+        });
+
+    </script>
+</body>
+</html>
